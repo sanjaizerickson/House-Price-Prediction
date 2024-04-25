@@ -1,7 +1,6 @@
 import streamlit as st
-import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
-import locale
+import pandas as pd
 
 # Load data
 data = pd.read_csv('new_data.csv')
@@ -58,16 +57,16 @@ def main():
             area = float(area)  # Convert area to float
             prediction = model.predict([[area, bedrooms, bathrooms, stories, mainroad, guestroom, basement, airconditioning, furnishing_status, parking, 0]])[0]
 
-            # Format prediction in lakhs and thousands format
-            prediction_in_lakhs = prediction / 100000
-            formatted_prediction = locale.format_string("%.0f", prediction_in_lakhs, grouping=True)
+            # Format prediction in lakhs and thousands format manually
+            lakhs = int(prediction) // 100000
+            thousands = int(prediction) % 100000
+            formatted_prediction = f'₹ {lakhs:,} Lakh {thousands:,}'
 
             # Display formatted prediction with bold text and a different background color
-            st.success(f'**Predicted Price: ₹ {formatted_prediction}**')
+            st.success(f'**Predicted Price: {formatted_prediction}**')
         except ValueError:
             st.error('Please enter a valid number for the area.')
 
 # Run the Streamlit app
 if __name__ == '__main__':
-    locale.setlocale(locale.LC_NUMERIC, 'en_IN')
     main()
