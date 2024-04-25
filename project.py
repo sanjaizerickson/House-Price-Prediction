@@ -29,7 +29,7 @@ def main():
 
     # Add input fields
     st.sidebar.title("Input Features")
-    input_container = st.sidebar.beta_container()
+    input_container = st.sidebar.container()
     with input_container:
         st.markdown("<h3 style='text-align: center;'>Input Features</h3>", unsafe_allow_html=True)
         area = st.text_input('Area (in sq. ft.)')
