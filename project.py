@@ -1,5 +1,5 @@
 import streamlit as st
-#import locale
+import locale
 from sklearn.ensemble import RandomForestRegressor
 import pandas as pd
 
@@ -55,7 +55,7 @@ def main():
 
             # Format prediction in Indian Rupees
             #locale.setlocale(locale.LC_NUMERIC, 'en_IN')
-            #formatted_prediction = locale.format_string("%.0f", prediction, grouping=True)
+            formatted_prediction = locale.format_string("%.0f", prediction, grouping=True)
 
             # Display formatted prediction with bold text and a different background color
             st.success(f'**Predicted Price: ₹ {formatted_prediction}**')
