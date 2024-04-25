@@ -53,7 +53,7 @@ def main():
             prediction = model.predict([[area, bedrooms, bathrooms, stories, mainroad, guestroom, basement, airconditioning, furnishing_status, parking, 0]])[0]
 
             # Format prediction in Indian Rupees
-            locale.setlocale(locale.LC_NUMERIC, 'en_IN')
+            #locale.setlocale(locale.LC_NUMERIC, 'en_IN')
             formatted_prediction = locale.format_string("%.0f", prediction, grouping=True)
 
             # Display formatted prediction with bold text and a different background color
