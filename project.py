@@ -29,7 +29,7 @@ def main():
     
     # Load and resize the image
     image = Image.open("house_image.png")
-    resized_image = image.resize((50, 50))  # Resize the image to desired dimensions
+    resized_image = image.resize((100, 100))  # Resize the image to desired dimensions
     st.image(resized_image, use_column_width=True)  # Display the resized image
     
     st.markdown("---")  # Horizontal line for separation
