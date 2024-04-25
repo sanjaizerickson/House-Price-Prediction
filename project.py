@@ -1,5 +1,6 @@
 import streamlit as st
-import locale
+from PIL import Image
+
 from sklearn.ensemble import RandomForestRegressor
 import pandas as pd
 
@@ -26,8 +27,10 @@ def main():
 
     st.title('House Price Prediction')  # Title with Indian Rupees symbol
     
-    # Add house image
-    st.image("house_image.png", use_column_width=True)
+    # Load and resize the image
+    image = Image.open("house_image.png")
+    resized_image = image.resize((300, 300))  # Resize the image to desired dimensions
+    st.image(resized_image, use_column_width=True)  # Display the resized image
     
     st.markdown("---")  # Horizontal line for separation
 
@@ -58,12 +61,8 @@ def main():
             area = float(area)  # Convert area to float
             prediction = model.predict([[area, bedrooms, bathrooms, stories, mainroad, guestroom, basement, airconditioning, furnishing_status, parking, 0]])[0]
 
-            # Format prediction in Indian Rupees
-            locale.setlocale(locale.LC_NUMERIC, 'en_IN')
-            formatted_prediction = locale.format_string("%.0f", prediction, grouping=True)
-
             # Display formatted prediction with bold text and a different background color
-            st.success(f'**Predicted Price: ₹ {formatted_prediction}**')
+            st.success(f'**Predicted Price: ₹ {prediction:.0f}**')
         except ValueError:
             st.error('Please enter a valid number for the area.')
 
