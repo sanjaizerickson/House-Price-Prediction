@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import Image
+#from PIL import Image
 
 from sklearn.ensemble import RandomForestRegressor
 import pandas as pd
