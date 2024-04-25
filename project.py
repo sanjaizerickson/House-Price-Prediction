@@ -27,12 +27,7 @@ def main():
 
     st.title('House Price Prediction')  # Title with Indian Rupees symbol
     
-    # Load and resize the image
-    image = Image.open("house_image.png")
-    resized_image = image.resize((500, 500))  # Resize the image to desired dimensions
-    st.image(resized_image, use_column_width=True)  # Display the resized image
-    
-    st.markdown("---")  # Horizontal line for separation
+    st.image("house_image.png", use_column_width=True)  # Display the resized image
 
     # Add input fields
     st.sidebar.title("Input Features")
