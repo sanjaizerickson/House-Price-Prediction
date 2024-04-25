@@ -1,6 +1,7 @@
 import streamlit as st
-from sklearn.ensemble import RandomForestRegressor
 import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+import locale
 
 # Load data
 data = pd.read_csv('new_data.csv')
@@ -29,16 +30,19 @@ def main():
 
     # Add input fields
     st.sidebar.title("Input Features")
-    area = st.sidebar.text_input('Area (in sq. ft.)')
-    bedrooms = st.sidebar.number_input('Number of Bedrooms', min_value=0, max_value=3, step=1)
-    bathrooms = st.sidebar.number_input('Number of Bathrooms', min_value=0, max_value=3, step=1)
-    stories = st.sidebar.number_input('Number of Floors', min_value=0, max_value=3, step=1)
-    mainroad = st.sidebar.selectbox('Main Road Access', options=['No', 'Yes'])
-    guestroom = st.sidebar.selectbox('Guest Room', options=['No', 'Yes'])
-    basement = st.sidebar.selectbox('Basement', options=['No', 'Yes'])
-    airconditioning = st.sidebar.selectbox('Air Conditioning', options=['No', 'Yes'])
-    furnishing_status = st.sidebar.selectbox('Furnishing Status', options=['Unfurnished', 'Semi-Furnished', 'Fully Furnished'])
-    parking = st.sidebar.selectbox('Parking Spaces', options=['No', 'Yes'])
+    input_container = st.sidebar.beta_container()
+    with input_container:
+        st.markdown("<h3 style='text-align: center;'>Input Features</h3>", unsafe_allow_html=True)
+        area = st.text_input('Area (in sq. ft.)')
+        bedrooms = st.number_input('Number of Bedrooms', min_value=0, max_value=3, step=1)
+        bathrooms = st.number_input('Number of Bathrooms', min_value=0, max_value=3, step=1)
+        stories = st.number_input('Number of Floors', min_value=0, max_value=3, step=1)
+        mainroad = st.selectbox('Main Road Access', options=['No', 'Yes'])
+        guestroom = st.selectbox('Guest Room', options=['No', 'Yes'])
+        basement = st.selectbox('Basement', options=['No', 'Yes'])
+        airconditioning = st.selectbox('Air Conditioning', options=['No', 'Yes'])
+        furnishing_status = st.selectbox('Furnishing Status', options=['Unfurnished', 'Semi-Furnished', 'Fully Furnished'])
+        parking = st.selectbox('Parking Spaces', options=['No', 'Yes'])
 
     # Convert word inputs to numerical values
     mainroad = 1 if mainroad == 'Yes' else 0
@@ -54,11 +58,16 @@ def main():
             area = float(area)  # Convert area to float
             prediction = model.predict([[area, bedrooms, bathrooms, stories, mainroad, guestroom, basement, airconditioning, furnishing_status, parking, 0]])[0]
 
+            # Format prediction in lakhs and thousands format
+            prediction_in_lakhs = prediction / 100000
+            formatted_prediction = locale.format_string("%.0f", prediction_in_lakhs, grouping=True)
+
             # Display formatted prediction with bold text and a different background color
-            st.success(f'**Predicted Price: ₹ {prediction:.0f}**')
+            st.success(f'**Predicted Price: ₹ {formatted_prediction}**')
         except ValueError:
             st.error('Please enter a valid number for the area.')
 
 # Run the Streamlit app
 if __name__ == '__main__':
+    locale.setlocale(locale.LC_NUMERIC, 'en_IN')
     main()
