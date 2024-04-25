@@ -58,10 +58,7 @@ def main():
             prediction = model.predict([[area, bedrooms, bathrooms, stories, mainroad, guestroom, basement, airconditioning, furnishing_status, parking, 0]])[0]
 
             # Format prediction in Indian format
-            prediction_in_lakhs = prediction / 100000
-            lakhs = int(prediction_in_lakhs)
-            thousands = int(prediction) % 100000
-            formatted_prediction = f'₹ {lakhs:02d},{thousands:03d}'
+            formatted_prediction = f'₹ {prediction:,.0f}'
 
             # Display formatted prediction with bold text and a different background color
             st.success(f'**Predicted Price: {formatted_prediction}**')
