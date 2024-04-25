@@ -24,7 +24,7 @@ parking_mapping = {'No': 0, 'Yes': 1}
 def main():
     st.set_page_config(page_title="House Price Prediction", page_icon=":house_with_garden:", layout="wide")
     st.title('House Price Prediction')  # Title with Indian Rupees symbol
-    st.image("house_image.png", use_column_width=True)
+    #st.image("house_image.png", use_column_width=True)
 
     # Add input fields
     st.header('Input Features')
@@ -55,7 +55,7 @@ def main():
 
             # Format prediction in Indian Rupees
             #locale.setlocale(locale.LC_NUMERIC, 'en_IN')
-            formatted_prediction = locale.format_string("%.0f", prediction, grouping=True)
+            #formatted_prediction = locale.format_string("%.0f", prediction, grouping=True)
 
             # Display formatted prediction with bold text and a different background color
             st.success(f'**Predicted Price: ₹ {formatted_prediction}**')
