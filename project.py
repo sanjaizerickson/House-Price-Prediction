@@ -27,10 +27,47 @@ parking_mapping = {'No': 0, 'Yes': 1}
 def main():
     st.set_page_config(page_title="House Price Prediction", page_icon=":house_with_garden:", layout="wide")
     st.title('House Price Prediction')  # Title with Indian Rupees symbol
-    # st.image("house_image.png", use_column_width=True)
+
+    # Set page background color
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #f0f2f6;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
     # Add input fields
     st.header('Input Features')
+
+    # Set sidebar background color and text color
+    st.markdown(
+        """
+        <style>
+        .sidebar .sidebar-content {
+            background-color: #ffffff;
+            color: #333333;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Set main content area background color
+    st.markdown(
+        """
+        <style>
+        .reportview-container .main .block-container {
+            background-color: #ffffff;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     area = st.text_input('Area (in sq. ft.)')
     bedrooms = st.number_input('Number of Bedrooms', min_value=0, max_value=3, step=1)
     bathrooms = st.number_input('Number of Bathrooms', min_value=0, max_value=3, step=1)
