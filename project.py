@@ -28,12 +28,12 @@ def main():
     st.set_page_config(page_title="House Price Prediction", page_icon=":house_with_garden:", layout="wide")
     st.title('House Price Prediction')  # Title with Indian Rupees symbol
 
-    # Set page background color to a dark tone
+    # Set page background color to dark blue
     st.markdown(
         """
         <style>
         body {
-            background-color: #1E1E1E;
+            background-color: #0F3057;
         }
         </style>
         """,
@@ -45,7 +45,7 @@ def main():
         """
         <style>
         .sidebar .sidebar-content {
-            background-color: #2E2E2E;
+            background-color: #192734;
             color: #CCCCCC;
         }
         </style>
@@ -53,12 +53,12 @@ def main():
         unsafe_allow_html=True
     )
 
-    # Set main content area background color to a darker tone
+    # Set main content area background color to a slightly lighter shade of blue
     st.markdown(
         """
         <style>
         .reportview-container .main .block-container {
-            background-color: #2E2E2E;
+            background-color: #0F3057;
         }
         </style>
         """,
