@@ -28,40 +28,37 @@ def main():
     st.set_page_config(page_title="House Price Prediction", page_icon=":house_with_garden:", layout="wide")
     st.title('House Price Prediction')  # Title with Indian Rupees symbol
 
-    # Set page background color
+    # Set page background color to a dark tone
     st.markdown(
         """
         <style>
         body {
-            background-color: #f0f2f6;
+            background-color: #1E1E1E;
         }
         </style>
         """,
         unsafe_allow_html=True
     )
-
-    # Add input fields
-    st.header('Input Features')
 
     # Set sidebar background color and text color
     st.markdown(
         """
         <style>
         .sidebar .sidebar-content {
-            background-color: #ffffff;
-            color: #333333;
+            background-color: #2E2E2E;
+            color: #CCCCCC;
         }
         </style>
         """,
         unsafe_allow_html=True
     )
 
-    # Set main content area background color
+    # Set main content area background color to a darker tone
     st.markdown(
         """
         <style>
         .reportview-container .main .block-container {
-            background-color: #ffffff;
+            background-color: #2E2E2E;
         }
         </style>
         """,
