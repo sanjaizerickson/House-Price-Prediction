@@ -26,39 +26,14 @@ parking_mapping = {'No': 0, 'Yes': 1}
 # Define the Streamlit app
 def main():
     st.set_page_config(page_title="House Price Prediction", page_icon=":house_with_garden:", layout="wide")
-    st.title('House Price Prediction')  # Title with Indian Rupees symbol
 
-    # Set page background color to dark blue
+    # Dark theme
     st.markdown(
         """
         <style>
         body {
-            background-color: #0F3057;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Set sidebar background color and text color
-    st.markdown(
-        """
-        <style>
-        .sidebar .sidebar-content {
-            background-color: #192734;
-            color: #CCCCCC;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Set main content area background color to a slightly lighter shade of blue
-    st.markdown(
-        """
-        <style>
-        .reportview-container .main .block-container {
-            background-color: #0F3057;
+            background-color: #1E1E1E;
+            color: #FFFFFF;
         }
         </style>
         """,
@@ -102,4 +77,3 @@ def main():
 # Run the Streamlit app
 if __name__ == '__main__':
     main()
-
